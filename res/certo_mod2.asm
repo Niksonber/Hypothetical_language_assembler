@@ -1,0 +1,9 @@
+BEGIN
+
+EXTERN PRINT
+
+
+
+STOP
+
+END
