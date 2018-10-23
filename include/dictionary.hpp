@@ -38,8 +38,6 @@
         CONST,    //   1      1    Reservar    mem ́oria    para    armazena-mento de uma constante inteira de 16bitsem base decimal ou hexadecimal.
         EQU,      //   1      0    Cria  um  sinˆonimo  textual  para  ums ́ımbolo
         IF,       //   1      0    Instrue  o  montador  a  incluir  alinhaseguintedo c ́odigo somente se o valordo operando for 1
-        MACRO,    //   0      0    Marcar in ́ıcio de suma MACRO. Sem-pre dentro da se ̧c ̃ao TEXT e antes doc ́odigo principal
-        ENDMACRO, //   0      0    Marcar o fim de uma MACRO.
 
         // Trab 2
         BEGIN,    //
@@ -80,9 +78,7 @@ namespace dictionary {
         {"SPACE",   directive(SPACE,    1, -1)},
         {"CONST",   directive(CONST,    1, 1)},
         {"EQU",     directive(EQU,      1, 0)},
-        {"IF",      directive(IF,       1, 0)},
-        {"MACRO",   directive(MACRO,    0, 0)},
-        {"ENDMACRO",directive(ENDMACRO, 0, 0)}
+        {"IF",      directive(IF,       1, 0)}
     };
 
     // Useful Methods

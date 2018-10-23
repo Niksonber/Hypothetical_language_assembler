@@ -30,33 +30,6 @@
  */
 // #define DEBUG_PREP_PRINT_TOKENS
 
-// ------------------------------------------------------ MACRO
-
-/* DEBUG_MAC_TOKEN_FLAGS
-    Prints Tokens after macros
- */
-// #define DEBUG_MAC_TOKEN_FLAGS
-
-/* DEBUG_MAC_PRINT_TOKENS_IN
-    Prints Tokens after macros
- */
-// #define DEBUG_MAC_PRINT_TOKENS_IN
-
-/* DEBUG_MDT_MNT
-    Prints Tokens after macros
- */
-// #define DEBUG_MDT_MNT
-
-/* DEBUG_MAC_PRINT_TOKENS_OUT
-    Prints Tokens after macros
-//  */
-// #define DEBUG_MAC_PRINT_TOKENS_OUT
-
-/* DEBUG_MAC_OUTPUT
-    Prints Tokens after macros
- */
-// #define DEBUG_MAC_OUTPUT
-
 // ------------------------------------------------------ PARSER
 
 /* DEBUG_PARSER_SYMBOL_TABLE

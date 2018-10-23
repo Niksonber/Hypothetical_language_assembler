@@ -4,12 +4,7 @@
 #include "../include/program.hpp"
 #include "../include/prep.hpp"
 #include "../include/parser.hpp"
-//#include "../include/assembler.hpp"
 #include "../include/file.hpp"
-
-
-
-
 
 int run(std::string flag, vector_of_strings files){
     // Read Flags
@@ -34,7 +29,6 @@ int run(std::string flag, vector_of_strings files){
         
     return 0;
 }
-
 
 
 
@@ -65,7 +59,7 @@ bool process(std::string filename, char mode, bool modular){
         exit(-5);
     }
 
-to_file(prepped, output, ".pre");
+ to_file(prepped, output, ".pre");
  for (vector_of_tokens::iterator it = tokenized->begin() ; it != tokenized->end(); ++it){
         if (it->text.compare("BEGIN") == 0){
             BEGIN = true;
@@ -91,7 +85,7 @@ to_file(prepped, output, ".pre");
     prepped.clear();
     temp.clear();
     delete tokenized;
-    //delete parsed;
+
     
     return true;
 }

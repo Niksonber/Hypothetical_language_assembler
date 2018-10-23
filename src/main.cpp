@@ -11,7 +11,6 @@
  *
  * Flags:
  * -p (preprocessador)  => .pre (processa apenas expressoes IF e EQU)
- * -m (macros)          => .mcr (processa macros)
  * -o (montagem)        => .o   (monta o codigo fonte dado)
  *
  */

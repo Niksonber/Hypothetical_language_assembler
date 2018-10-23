@@ -8,7 +8,7 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
-// ------------------------------------------------ MACROS
+
 #define vector_of_strings std::vector<std::string>
 
 
