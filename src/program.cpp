@@ -67,12 +67,6 @@ bool process(std::string filename, char mode, bool modular){
         return 0;
     }
 
-    // 2. Macros Expanded 
-    if (mode == 'm') {
-        to_file(prepped, output, ".mcr");
-        return 0;
-    }
-
     for (vector_of_tokens::iterator it = tokenized->begin() ; it != tokenized->end(); ++it){
         if (it->text.compare("BEGIN") == 0){
             BEGIN = true;
