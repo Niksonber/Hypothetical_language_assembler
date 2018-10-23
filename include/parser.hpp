@@ -1,52 +1,46 @@
-#pragma once
+/**
+*	ALUNOS: NIKSON BERNARDES - 15/0143231
+*			THALES GONÇALVES GRILO - 14/0163603
+*	MATERIA: SOFTWARE BÁSICO
+**/
+
+
+
 #include <iostream>
-#include <map>
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <iomanip>
+#include <map> 
 
-#include "typedefs.hpp"
-#include "dictionary.hpp"
-
-#include "error.hpp"
-
-#include "model.hpp"
-
-
-// Helpers
-bool   declared(std::string, symbol_table);
-symbol retrieve(std::string, symbol_table);
-
-bool declared(std::string, def_table);
-int  retrieve(std::string, def_table);
-
-void print_def_table (def_table,    std::string = "");
-void print_sym_table (symbol_table, std::string = "");
-// bool add_entries     (def_table, def_table*);
+using namespace std;
 
 
-// Core Function
-bool parse (vector_of_tokens*, program*, bool = false);
+//TRANSFORMA STRING EM VETOR DE STRINGS SEPARANDO POR ESPAÇO
+vector<string> split(string str, char sep);
 
-/** 1st pass
- * input:
- *  1. Code, as tokens
- *  2. Local Symbol Table pointer
- * 
- * returns:
- *  Definition Table (exported variables)
- */
-bool first_pass(program*, vector_of_tokens*, bool = false);
+//BUSCA EM MAP (UTILIZADO PARA VEFIFICAR EXISTENCIA NA TABELA DE SIMBOLOS, USO E DEFINICOES)
 
-/** 2st pass
- * input:
- *  1. Reference to output ast
- *  2. Code, as tokens, to be parsed into the ast
- *  3. Local Symbol Table
- *  4. Global Definition Table, to check for cross-references
- * 
- * returns:
- *  Usage Table (imported and local symbols)
- */
-bool second_pass(program*, vector_of_tokens&, bool = false);
+pair<string,int> search(string token, map<string, pair<string,int> > list);
 
-bool astcheck   (ast&, vector_of_strings&);
+pair<int,char> search(string token, map<string,pair<int,char>> list);
 
-expression parseexp  (Token, symbol_table& st);
+
+int search(string token, map<string,int> list);
+
+//EXECUTA DIRETIVA CONST E SPACE
+string exec_diretive(vector<string> line);
+
+//VERIFICA ERROS DIRETIVA NA SECAO ERRADA
+void erro_dire(string token, char section, int line);
+
+//PRIMEIRO PASSE - ADICIONA ELEMENTOS NA TABELA DE SIMBOLO
+map<string, pair<int,char>>  first_pass(string filename);
+
+
+//VERIFICA ERROS SEMANTICOS, TIPO: PULAR PRO LUGAR ERRADO, DIVIDIR POR ZERO, SUBSTITUIR CONSTANTE
+void erro(vector<string> tokens, int i, int line, map<string, pair<int,char>> TS);
+
+
+//SEGUNDA PASSAGEM
+void second_pass(string filename, bool modular, map<string, pair<int,char>> TS);
