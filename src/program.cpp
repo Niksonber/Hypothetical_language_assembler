@@ -4,8 +4,12 @@
 #include "../include/program.hpp"
 #include "../include/prep.hpp"
 #include "../include/parser.hpp"
-#include "../include/assembler.hpp"
+//#include "../include/assembler.hpp"
 #include "../include/file.hpp"
+
+
+
+
 
 int run(std::string flag, vector_of_strings files){
     // Read Flags
@@ -60,20 +64,9 @@ bool process(std::string filename, char mode, bool modular){
                 << std::endl;
         exit(-5);
     }
-    // Flag-controlled Outputs
-    // 1. If, Equ Expanded
-    if (mode == 'p') {
-        to_file(prepped, output, ".pre");
-        return 0;
-    }
 
-    // 2. Macros Expanded 
-    if (mode == 'm') {
-        to_file(prepped, output, ".mcr");
-        return 0;
-    }
-
-    for (vector_of_tokens::iterator it = tokenized->begin() ; it != tokenized->end(); ++it){
+to_file(prepped, output, ".pre");
+ for (vector_of_tokens::iterator it = tokenized->begin() ; it != tokenized->end(); ++it){
         if (it->text.compare("BEGIN") == 0){
             BEGIN = true;
         }else if (it->text.compare("END") == 0){
@@ -91,23 +84,14 @@ bool process(std::string filename, char mode, bool modular){
             exit(-5);
         }
     }
-
-// -------------------------------------------------------------------- Parse Modules
-    program* parsed = new program();
-
-    if (!parse(tokenized, parsed, modular)) exit(-6);
-    if (!astcheck(parsed->code, prepped))  exit(-5);    
-
-// -------------------------------------------------------------------- Assemble Modules
-    std::string as = assemble(*parsed, modular);
-    // std::cout << as <<std::endl;
-    if (!to_file(as, output, ".o")) exit(-10);
+    cout << output << endl;
+    second_pass(output, modular,first_pass(output));
 
     // Cleanup
     prepped.clear();
     temp.clear();
     delete tokenized;
-    delete parsed;
+    //delete parsed;
     
     return true;
 }
